@@ -23,7 +23,7 @@ class NoSleepApp
 
     static void ShowSplashScreen()
     {
-        MessageBox.Show("Program Spustený, PC sa neuspí \n\nAk Chcete obnoviť spánok vypnite program cez System Tray Šípku ^", "NoSleepV2", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        MessageBox.Show("App Successfully Launched, PC won't go to sleep \n\nTo restore default sleep behaviour, Exit the app through the System Tray", "NoSleepV2", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
     [STAThread]
@@ -49,7 +49,7 @@ class NoSleepApp
             ContextMenuStrip = new ContextMenuStrip()
         };
 
-        var exitItem = new ToolStripMenuItem("Ukončiť", null, (s, e) =>
+        var exitItem = new ToolStripMenuItem("Exit", null, (s, e) =>
         {
             AllowSleep();  
             trayIcon.Dispose();
