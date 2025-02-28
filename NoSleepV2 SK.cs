@@ -43,10 +43,15 @@ class NoSleepApp
 
         trayIcon = new NotifyIcon()
         {
-            Icon = new Icon(@"IconPath"), 
+            Icon = SystemIcons.Information,  
             Text = "NoSleepV2 - by github.com/Rendekendo/",
             Visible = true,
             ContextMenuStrip = new ContextMenuStrip()
+        };
+
+        var programNameItem = new ToolStripMenuItem("NoSleepV2")
+        {
+            Enabled = false  
         };
 
         var exitItem = new ToolStripMenuItem("Ukončiť", null, (s, e) =>
@@ -56,7 +61,8 @@ class NoSleepApp
             Application.Exit();
         });
 
-        trayIcon.ContextMenuStrip.Items.Add(exitItem);
+        trayIcon.ContextMenuStrip.Items.Add(programNameItem);  
+        trayIcon.ContextMenuStrip.Items.Add(exitItem);         
 
         Application.Run();
     }
