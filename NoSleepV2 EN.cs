@@ -23,7 +23,7 @@ class NoSleepApp
 
     static void ShowSplashScreen()
     {
-        MessageBox.Show("App Successfully Launched, PC won't go to sleep \n\nTo restore default sleep behaviour, Exit the app through the System Tray", "NoSleepV2", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        MessageBox.Show("Program Started, PC will not sleep \n\nTo restore sleep behavior, turn off the program from the System Tray ^", "NoSleepV2", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
     [STAThread]
@@ -43,10 +43,15 @@ class NoSleepApp
 
         trayIcon = new NotifyIcon()
         {
-            Icon = new Icon(@"IconPath"), 
+            Icon = SystemIcons.Information,  
             Text = "NoSleepV2 - by github.com/Rendekendo/",
             Visible = true,
             ContextMenuStrip = new ContextMenuStrip()
+        };
+
+        var programNameItem = new ToolStripMenuItem("NoSleepV2")
+        {
+            Enabled = false  
         };
 
         var exitItem = new ToolStripMenuItem("Exit", null, (s, e) =>
@@ -56,7 +61,8 @@ class NoSleepApp
             Application.Exit();
         });
 
-        trayIcon.ContextMenuStrip.Items.Add(exitItem);
+        trayIcon.ContextMenuStrip.Items.Add(programNameItem);  
+        trayIcon.ContextMenuStrip.Items.Add(exitItem);         
 
         Application.Run();
     }
