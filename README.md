@@ -6,4 +6,3 @@ Features
 - Prevents sleep mode while the app is running
 - Displays a splash screen upon launch
 - System tray icon for easy exit
-- No additional installations required
